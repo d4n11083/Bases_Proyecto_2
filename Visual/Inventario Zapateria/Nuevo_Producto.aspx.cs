@@ -37,7 +37,14 @@ namespace Inventario_Zapateria
                 empyFields += " Cantidad ";
             }
 
-            if( TextBoxDescripcion.Text == "")
+            int i;
+            if (!int.TryParse(textBoxQuant.Text, out i))
+            {
+                empyFields += " En Cantidad solo se pueden colocar números ";
+                isOk = false;
+            }
+
+            if ( TextBoxDescripcion.Text == "")
             {
                 isOk = false;
                 empyFields += " Descripcion ";

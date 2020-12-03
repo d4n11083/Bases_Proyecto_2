@@ -62,8 +62,7 @@
 
 
     <div>
-    <asp:Button ID="SaveButton" runat="server" OnClick="SaveShoe" onClientClick="SaveShoe" Text="Guardar" />
-    <asp:Button ID="AddButton" runat="server" OnClick="addShoe" OnClientClick="addShoe" Text="  +  " />
+    <asp:Button ID="AddButton" runat="server" OnClick="addShoe" OnClientClick="addShoe" Text="  Añadir Zapato  " />
 
     <asp:Label ID="labelConsole" runat="server" ></asp:Label>
     <asp:SqlDataSource ID="SqlDataSourceShoes" runat="server" ConnectionString="<%$ ConnectionStrings:InventarioZapateriaConnectionStringJoshua %>" InsertCommand="ZapatosInsert_usp" InsertCommandType="StoredProcedure" SelectCommand="ZapatosSelect_usp" SelectCommandType="StoredProcedure" >

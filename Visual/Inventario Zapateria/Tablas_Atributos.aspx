@@ -7,11 +7,12 @@
         <asp:Label ID="LabelstyleTable" runat="server" Text="Estilos"></asp:Label>
         <br />
 
-        <asp:GridView ID="GridViewStyle" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="Groove" HorizontalAlign="Center" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSourceStyle" ForeColor="Black">
+        <asp:GridView ID="GridViewStyle" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="Groove" HorizontalAlign="Center" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSourceStyle" ForeColor="Black" DataKeyNames="id_Estilo">
             <Columns>
-                <asp:BoundField DataField="id_Estilo" HeaderText="id_Estilo" SortExpression="id_Estilo" />
+                <asp:BoundField DataField="id_Estilo" HeaderText="id_Estilo" SortExpression="id_Estilo" InsertVisible="False" ReadOnly="True" />
                 <asp:BoundField DataField="estilo" HeaderText="estilo" SortExpression="estilo" />
-                <asp:BoundField DataField="disponible" HeaderText="disponible" SortExpression="disponible" />
+                <asp:CheckBoxField DataField="disponible" HeaderText="disponible" SortExpression="disponible" />
+                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
             </Columns>
             <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
             <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
@@ -22,7 +23,23 @@
             <SortedDescendingCellStyle BackColor="#E5E5E5" />
             <SortedDescendingHeaderStyle BackColor="#242121" />
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSourceStyle" runat="server" ConnectionString="<%$ ConnectionStrings:InventarioZapateriaConnectionStringJoshua %>" SelectCommand="SELECT * FROM [Estilos]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSourceStyle" runat="server" ConnectionString="<%$ ConnectionStrings:InventarioZapateriaConnectionStringJoshua %>" SelectCommand="EstilosSelect_usp" DeleteCommand="EstilosDelete_usp" DeleteCommandType="StoredProcedure" InsertCommand="EstilosInsert_usp" InsertCommandType="StoredProcedure" UpdateCommand="EstilosUpdate_usp" UpdateCommandType="StoredProcedure" SelectCommandType="StoredProcedure">
+            <DeleteParameters>
+                <asp:Parameter Name="id_Estilo" Type="Int32" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="estilo" Type="String" />
+                <asp:Parameter Name="disponible" Type="Boolean" />
+            </InsertParameters>
+            <SelectParameters>
+                <asp:Parameter DefaultValue="NULL" Name="id_Estilo" Type="DBNull" />
+            </SelectParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="id_Estilo" Type="Int32" />
+                <asp:Parameter Name="estilo" Type="String" />
+                <asp:Parameter Name="disponible" Type="Boolean" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
 
         <br />
         <asp:TextBox ID="TextBoxStyleAdd" runat="server"></asp:TextBox>
@@ -35,11 +52,12 @@
     <asp:Panel ID="PanelColour" class="col-md-6" runat="server" BackColor="#CCCCFF">
         <asp:Label ID="LabelColour" runat="server" Text="Colores"></asp:Label>
         <br />
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="Groove" HorizontalAlign="Center" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSourceColour" ForeColor="Black">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="Groove" HorizontalAlign="Center" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSourceColour" ForeColor="Black" DataKeyNames="id_Color">
             <Columns>
-                <asp:BoundField DataField="id_Color" HeaderText="id_Color" SortExpression="id_Color" />
+                <asp:BoundField DataField="id_Color" HeaderText="id_Color" SortExpression="id_Color" InsertVisible="False" ReadOnly="True" />
                 <asp:BoundField DataField="color" HeaderText="color" SortExpression="color" />
-                <asp:BoundField DataField="disponible" HeaderText="disponible" SortExpression="disponible" />
+                <asp:CheckBoxField DataField="disponible" HeaderText="disponible" SortExpression="disponible" />
+                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
             </Columns>
             <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
             <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
@@ -50,7 +68,23 @@
             <SortedDescendingCellStyle BackColor="#E5E5E5" />
             <SortedDescendingHeaderStyle BackColor="#242121" />
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSourceColour" runat="server" ConnectionString="<%$ ConnectionStrings:InventarioZapateriaConnectionStringJoshua %>" SelectCommand="SELECT * FROM [Colores]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSourceColour" runat="server" ConnectionString="<%$ ConnectionStrings:InventarioZapateriaConnectionStringJoshua %>" SelectCommand="ColoresSelect_usp" DeleteCommand="ColoresDelete_usp" DeleteCommandType="StoredProcedure" InsertCommand="ColoresInsert_usp" InsertCommandType="StoredProcedure" SelectCommandType="StoredProcedure" UpdateCommand="ColoresUpdate_usp" UpdateCommandType="StoredProcedure">
+            <DeleteParameters>
+                <asp:Parameter Name="id_Color" Type="Int32" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="color" Type="String" />
+                <asp:Parameter Name="disponible" Type="Boolean" />
+            </InsertParameters>
+            <SelectParameters>
+                <asp:Parameter DefaultValue="NULL" Name="id_Color" Type="DBNull" />
+            </SelectParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="id_Color" Type="Int32" />
+                <asp:Parameter Name="color" Type="String" />
+                <asp:Parameter Name="disponible" Type="Boolean" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
         
         <br />
         <asp:TextBox ID="TextBoxColourAdd" runat="server"></asp:TextBox>
@@ -67,11 +101,12 @@
     <asp:Panel ID="PanelSize" runat="server" class="col-md-6"  BackColor="#FFCCCC">
         <asp:Label ID="LabelSize" runat="server" Text="Tallas"></asp:Label>
         <br />
-        <asp:GridView ID="GridViewSize" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="Groove" HorizontalAlign="Center" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSourceSize" ForeColor="Black">
+        <asp:GridView ID="GridViewSize" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="Groove" HorizontalAlign="Center" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSourceSize" ForeColor="Black" DataKeyNames="id_Talla">
             <Columns>
-                <asp:BoundField DataField="id_Talla" HeaderText="id_Talla" SortExpression="id_Talla" />
-                <asp:BoundField DataField="Talla" HeaderText="Talla" SortExpression="Talla" />
-                <asp:BoundField DataField="disponible" HeaderText="disponible" SortExpression="disponible" />
+                <asp:BoundField DataField="id_Talla" HeaderText="id_Talla" SortExpression="id_Talla" InsertVisible="False" ReadOnly="True" />
+                <asp:BoundField DataField="talla" HeaderText="talla" SortExpression="talla" />
+                <asp:CheckBoxField DataField="disponible" HeaderText="disponible" SortExpression="disponible" />
+                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
             </Columns>
             <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
             <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
@@ -82,7 +117,23 @@
             <SortedDescendingCellStyle BackColor="#E5E5E5" />
             <SortedDescendingHeaderStyle BackColor="#242121" />
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSourceSize" runat="server" ConnectionString="<%$ ConnectionStrings:InventarioZapateriaConnectionStringJoshua %>" SelectCommand="SELECT * FROM [Tallas]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSourceSize" runat="server" ConnectionString="<%$ ConnectionStrings:InventarioZapateriaConnectionStringJoshua %>" SelectCommand="TallasSelect_usp" DeleteCommand="TallasDelete_usp" DeleteCommandType="StoredProcedure" InsertCommand="TallasInsert_usp" InsertCommandType="StoredProcedure" SelectCommandType="StoredProcedure" UpdateCommand="TallasUpdate_usp" UpdateCommandType="StoredProcedure">
+            <DeleteParameters>
+                <asp:Parameter Name="id_Talla" Type="Int32" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="talla" Type="Int32" />
+                <asp:Parameter Name="disponible" Type="Boolean" />
+            </InsertParameters>
+            <SelectParameters>
+                <asp:Parameter DefaultValue="NULL" Name="id_Talla" Type="DBNull" />
+            </SelectParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="id_Talla" Type="Int32" />
+                <asp:Parameter Name="talla" Type="Int32" />
+                <asp:Parameter Name="disponible" Type="Boolean" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
         
         <br />
         <asp:TextBox ID="TextBoxSizeAdd" runat="server"></asp:TextBox>
@@ -93,11 +144,12 @@
     <asp:Panel ID="PanelLine" runat="server" class="col-md-6"  BackColor="#FFFFCC">
         <asp:Label ID="LabelLine" runat="server" Text="Linea"></asp:Label>
         <br />
-        <asp:GridView ID="GridViewLine" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="Groove" HorizontalAlign="Center" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSourceLine" ForeColor="Black">
+        <asp:GridView ID="GridViewLine" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="Groove" HorizontalAlign="Center" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSourceLine" ForeColor="Black" DataKeyNames="id_Linea">
             <Columns>
-                <asp:BoundField DataField="id_Linea" HeaderText="id_Linea" SortExpression="id_Linea" />
+                <asp:BoundField DataField="id_Linea" HeaderText="id_Linea" SortExpression="id_Linea" InsertVisible="False" ReadOnly="True" />
                 <asp:BoundField DataField="genero" HeaderText="genero" SortExpression="genero" />
-                <asp:BoundField DataField="disponible" HeaderText="disponible" SortExpression="disponible" />
+                <asp:CheckBoxField DataField="disponible" HeaderText="disponible" SortExpression="disponible" />
+                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
             </Columns>
             <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
             <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
@@ -108,7 +160,23 @@
             <SortedDescendingCellStyle BackColor="#E5E5E5" />
             <SortedDescendingHeaderStyle BackColor="#242121" />
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSourceLine" runat="server" ConnectionString="<%$ ConnectionStrings:InventarioZapateriaConnectionStringJoshua %>" SelectCommand="SELECT * FROM [Lineas]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSourceLine" runat="server" ConnectionString="<%$ ConnectionStrings:InventarioZapateriaConnectionStringJoshua %>" SelectCommand="LineasSelect_usp" DeleteCommand="LineasDelete_usp" DeleteCommandType="StoredProcedure" InsertCommand="LineasInsert_usp" InsertCommandType="StoredProcedure" SelectCommandType="StoredProcedure" UpdateCommand="LineasUpdate_usp" UpdateCommandType="StoredProcedure">
+            <DeleteParameters>
+                <asp:Parameter Name="id_Linea" Type="Int32" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="genero" Type="String" />
+                <asp:Parameter Name="disponible" Type="Boolean" />
+            </InsertParameters>
+            <SelectParameters>
+                <asp:Parameter DefaultValue="NULL" Name="id_Linea" Type="DBNull" />
+            </SelectParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="id_Linea" Type="Int32" />
+                <asp:Parameter Name="genero" Type="String" />
+                <asp:Parameter Name="disponible" Type="Boolean" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
         
         <br />
         <asp:TextBox ID="TextBoxLineAdd" runat="server"></asp:TextBox>

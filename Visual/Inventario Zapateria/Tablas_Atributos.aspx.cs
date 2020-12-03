@@ -16,31 +16,40 @@ namespace Inventario_Zapateria
 
         }
 
-        private void addAtribute(string key, string Value)
-        {
-            LabelConsole.Text = " Anadir:  " + Value + " a " + key;
-        }
-
         protected void BtnAddStyle_Click(object sender, EventArgs e)
         {
-            addAtribute("Estilos", TextBoxStyleAdd.Text);
+
+            SqlDataSourceStyle.InsertParameters["estilo"].DefaultValue = TextBoxStyleAdd.Text;
+            SqlDataSourceStyle.Insert();
+            Response.Redirect("Tablas_Atributos");
+            LabelConsole.Text = TextBoxStyleAdd.Text + " agregado en Estilos";
+
         }
 
         protected void BtnAddColour_Click(object sender, EventArgs e)
         {
-            addAtribute("Colores", TextBoxColourAdd.Text);
+            SqlDataSourceColour.InsertParameters["color"].DefaultValue = TextBoxColourAdd.Text;
+            SqlDataSourceColour.Insert();
+            Response.Redirect("Tablas_Atributos");
+            LabelConsole.Text = TextBoxColourAdd.Text + " agregado en Colores";
 
         }
 
         protected void BtnAddSize_Click(object sender, EventArgs e)
         {
-            addAtribute("Tallas", TextBoxSizeAdd.Text);
+            SqlDataSourceSize.InsertParameters["talla"].DefaultValue = TextBoxSizeAdd.Text;
+            SqlDataSourceSize.Insert();
+            Response.Redirect("Tablas_Atributos");
+            LabelConsole.Text = TextBoxSizeAdd.Text + " agregado en Tallas";
 
         }
 
         protected void BtnAddLine_Click(object sender, EventArgs e)
         {
-            addAtribute("Lineas", TextBoxLineAdd.Text);
+            SqlDataSourceLine.InsertParameters["genero"].DefaultValue = TextBoxLineAdd.Text;
+            SqlDataSourceLine.Insert();
+            Response.Redirect("Tablas_Atributos");
+            LabelConsole.Text = TextBoxLineAdd.Text + " agregado en Lineas";
 
         }
     }

@@ -32,14 +32,15 @@
     <asp:Panel ID="PanelShoeData" runat="server" class="col-md-8" BackColor="#CCCCCC">
         <asp:Label ID="LabelShoeData" runat="server" Text="Inventario"></asp:Label>
 
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="Groove" HorizontalAlign="Center" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="Black">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="Groove" HorizontalAlign="Center" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="Black" AllowPaging="True" AllowSorting="True">
         <Columns>
-            <asp:BoundField DataField="modelo" HeaderText="Modelo" SortExpression="modelo" />
-            <asp:BoundField DataField="descripcion" HeaderText="Descripcion" SortExpression="descripcion" />
-            <asp:BoundField DataField="genero" HeaderText="Genero" SortExpression="genero" />
-            <asp:BoundField DataField="estilo" HeaderText="Estilo" SortExpression="estilo" />
-            <asp:BoundField DataField="color" HeaderText="Color" SortExpression="color" />
-            <asp:BoundField DataField="talla" HeaderText="Talla" SortExpression="talla" />
+            <asp:BoundField DataField="modelo" HeaderText="modelo" SortExpression="modelo" />
+            <asp:BoundField DataField="descripcion" HeaderText="descripcion" SortExpression="descripcion" />
+            <asp:BoundField DataField="genero" HeaderText="genero" SortExpression="genero" />
+            <asp:BoundField DataField="estilo" HeaderText="estilo" SortExpression="estilo" />
+            <asp:BoundField DataField="color" HeaderText="color" SortExpression="color" />
+            <asp:BoundField DataField="talla" HeaderText="talla" SortExpression="talla" />
+            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
         </Columns>
         <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
         <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
@@ -50,7 +51,20 @@
         <SortedDescendingCellStyle BackColor="#E5E5E5" />
         <SortedDescendingHeaderStyle BackColor="#242121" />
 </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:InventarioZapateriaConnectionStringJoshua %>" SelectCommand="ZapatosSelect_usp" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:InventarioZapateriaConnectionStringJoshua %>" SelectCommand="ZapatosSelect_usp" SelectCommandType="StoredProcedure" DeleteCommand="ZapatosDelete_usp" DeleteCommandType="StoredProcedure" UpdateCommand="ZapatosUpdate_usp" UpdateCommandType="StoredProcedure">
+        <DeleteParameters>
+            <asp:Parameter Name="id_Zapato" Type="Int32" />
+        </DeleteParameters>
+        <UpdateParameters>
+            <asp:Parameter Name="id_Zapato" Type="Int32" />
+            <asp:Parameter Name="modelo" Type="String" />
+            <asp:Parameter Name="descripcion" Type="String" />
+            <asp:Parameter Name="fk_color" Type="Int32" />
+            <asp:Parameter Name="fk_talla" Type="Int32" />
+            <asp:Parameter Name="fk_estilo" Type="Int32" />
+            <asp:Parameter Name="fk_linea" Type="Int32" />
+        </UpdateParameters>
+        </asp:SqlDataSource>
 
 
 

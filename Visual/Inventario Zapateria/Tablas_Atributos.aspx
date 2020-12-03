@@ -7,7 +7,7 @@
         <asp:Label ID="LabelstyleTable" runat="server" Text="Estilos"></asp:Label>
         <br />
 
-        <asp:GridView ID="GridViewStyle" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="Groove" HorizontalAlign="Center" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSourceStyle" ForeColor="Black" DataKeyNames="id_Estilo">
+        <asp:GridView ID="GridViewStyle" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="Groove" HorizontalAlign="Center" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSourceStyle" ForeColor="Black" DataKeyNames="id_Estilo" AllowPaging="True">
             <Columns>
                 <asp:BoundField DataField="id_Estilo" HeaderText="id_Estilo" SortExpression="id_Estilo" InsertVisible="False" ReadOnly="True" />
                 <asp:BoundField DataField="estilo" HeaderText="estilo" SortExpression="estilo" />
@@ -52,7 +52,7 @@
     <asp:Panel ID="PanelColour" class="col-md-6" runat="server" BackColor="#CCCCFF">
         <asp:Label ID="LabelColour" runat="server" Text="Colores"></asp:Label>
         <br />
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="Groove" HorizontalAlign="Center" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSourceColour" ForeColor="Black" DataKeyNames="id_Color">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="Groove" HorizontalAlign="Center" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSourceColour" ForeColor="Black" DataKeyNames="id_Color" AllowPaging="True">
             <Columns>
                 <asp:BoundField DataField="id_Color" HeaderText="id_Color" SortExpression="id_Color" InsertVisible="False" ReadOnly="True" />
                 <asp:BoundField DataField="color" HeaderText="color" SortExpression="color" />
@@ -101,7 +101,7 @@
     <asp:Panel ID="PanelSize" runat="server" class="col-md-6"  BackColor="#FFCCCC">
         <asp:Label ID="LabelSize" runat="server" Text="Tallas"></asp:Label>
         <br />
-        <asp:GridView ID="GridViewSize" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="Groove" HorizontalAlign="Center" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSourceSize" ForeColor="Black" DataKeyNames="id_Talla">
+        <asp:GridView ID="GridViewSize" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="Groove" HorizontalAlign="Center" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSourceSize" ForeColor="Black" DataKeyNames="id_Talla" AllowPaging="True">
             <Columns>
                 <asp:BoundField DataField="id_Talla" HeaderText="id_Talla" SortExpression="id_Talla" InsertVisible="False" ReadOnly="True" />
                 <asp:BoundField DataField="talla" HeaderText="talla" SortExpression="talla" />
@@ -144,7 +144,7 @@
     <asp:Panel ID="PanelLine" runat="server" class="col-md-6"  BackColor="#FFFFCC">
         <asp:Label ID="LabelLine" runat="server" Text="Linea"></asp:Label>
         <br />
-        <asp:GridView ID="GridViewLine" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="Groove" HorizontalAlign="Center" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSourceLine" ForeColor="Black" DataKeyNames="id_Linea">
+        <asp:GridView ID="GridViewLine" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="Groove" HorizontalAlign="Center" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSourceLine" ForeColor="Black" DataKeyNames="id_Linea" AllowPaging="True">
             <Columns>
                 <asp:BoundField DataField="id_Linea" HeaderText="id_Linea" SortExpression="id_Linea" InsertVisible="False" ReadOnly="True" />
                 <asp:BoundField DataField="genero" HeaderText="genero" SortExpression="genero" />

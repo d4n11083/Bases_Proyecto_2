@@ -9,6 +9,8 @@ drop trigger tallas_trigger;
 drop trigger tallas_disp_trigger;
 drop trigger tallas_disp2_trigger;
 drop trigger estilos_trigger;
+drop trigger estilos_disp_trigger;
+drop trigger estilos_disp2_trigger;
 
 
 --Verificación para los insert

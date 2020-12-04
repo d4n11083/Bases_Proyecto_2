@@ -11,7 +11,7 @@ namespace Inventario_Zapateria
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            PanelProcessUpdate.Visible = false;
         }
 
         private void Messagebox(string xMessage)
@@ -101,5 +101,40 @@ namespace Inventario_Zapateria
                 searchBy(TextBoxSearch.Text, btnSearchLine.ID);
             }
         }
+
+        protected void allowUpdate_Click(object sender, EventArgs e)
+        {
+            if (GridView1.SelectedDataKey != null)
+            {
+                if (PanelProcessUpdate.Visible)
+                {
+                    PanelProcessUpdate.Visible = false;
+                }
+                else
+                {
+                    PanelProcessUpdate.Visible = true;
+                }
+
+
+                TableCellCollection info = GridView1.SelectedRow.Cells;
+
+                labelId.Text = info[0].Text;
+                //textBoxModelo.Text = info[]
+
+                LabelConsole.Text = info[0].Text;
+            }
+            else
+            {
+                Messagebox("Debe Seleccionar la fila a actualizar");
+            }
+        }
+
+
+        protected void updateRow_Click(object sender, EventArgs e)
+        {
+            LabelConsole.Text = "Update";
+        }
+
+
     }
 }

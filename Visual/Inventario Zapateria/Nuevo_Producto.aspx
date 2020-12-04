@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="Nuevo Producto" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Nuevo_Producto.aspx.cs" Inherits="Inventario_Zapateria.Nuevo_Producto" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+    
+    
+    
     <div style="height: 57px; margin-top: 13px" >
 
         <asp:Label ID="labelModelo" runat="server" Text="Modelo"></asp:Label>

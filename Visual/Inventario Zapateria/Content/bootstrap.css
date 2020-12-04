@@ -134,7 +134,6 @@ input[type="reset"],
 input[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
-    height: 26px;
 }
 button[disabled],
 html input[disabled] {
@@ -1672,8 +1671,6 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
-    top: 0px;
-    left: 1px;
 }
 .col-xs-1,
 .col-xs-2,

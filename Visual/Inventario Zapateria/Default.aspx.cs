@@ -83,6 +83,9 @@ namespace Inventario_Zapateria
             if( checkField( TextBoxSearch, false, "Busqueda por Color" ))
             {
                 searchBy(TextBoxSearch.Text, btnSearchColour.ID);
+                GridView2.DataSource = SqlDataSource2;
+                GridView2.DataBind();
+                GridView2.Visible = true;
             }
         }
 

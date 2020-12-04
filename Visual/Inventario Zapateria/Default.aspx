@@ -7,6 +7,7 @@
     <div class="row mb-2" >
 
 
+
     <asp:Panel ID="PanelSearch" runat="server"  class="col-md-2" Height="202px"  BackColor="Silver">
         <asp:Label ID="LabelSearch" runat="server" Text="Buscar Por" BackColor="Gray"></asp:Label>
         <br />
@@ -71,6 +72,12 @@
             <asp:Parameter Name="fk_estilo" Type="Int32" />
             <asp:Parameter Name="fk_linea" Type="Int32" />
         </UpdateParameters>
+        </asp:SqlDataSource>
+
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:InventarioZapateriaConnectionStringJoshua2 %>" SelectCommand="buscarZapatosporColor" SelectCommandType="StoredProcedure">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="TextBoxSearch" Name="color" PropertyName="Text" Type="String" />
+            </SelectParameters>
         </asp:SqlDataSource>
 
     </asp:Panel>
@@ -159,6 +166,8 @@
     
 
     <asp:Label ID="LabelConsole" runat="server" Text="Label"></asp:Label>
+    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="true" Visible="false">
+        </asp:GridView>
 
 
 

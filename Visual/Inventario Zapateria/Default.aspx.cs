@@ -119,7 +119,8 @@ namespace Inventario_Zapateria
                 TableCellCollection info = GridView1.SelectedRow.Cells;
 
                 labelId.Text = info[0].Text;
-                //textBoxModelo.Text = info[]
+                textBoxModelo.Text = info[1].Text;
+                textBoxModelo.Text = info[2].Text;
 
                 LabelConsole.Text = info[0].Text;
             }

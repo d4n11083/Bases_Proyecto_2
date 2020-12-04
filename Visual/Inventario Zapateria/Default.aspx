@@ -37,14 +37,14 @@
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="Groove" HorizontalAlign="Center" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="Black" AllowPaging="True" AllowSorting="True" DataKeyNames="id_Zapato">
         <Columns>
 
-            <asp:BoundField DataField="id_Zapato" HeaderText="id_Zapato" SortExpression="id_Zapato" InsertVisible="False" ReadOnly="True" />
+            <asp:BoundField DataField="id_Zapato" HeaderText="id_Zapato" InsertVisible="False" ReadOnly="True" SortExpression="id_Zapato" />
             <asp:BoundField DataField="modelo" HeaderText="modelo" SortExpression="modelo" />
             <asp:BoundField DataField="descripcion" HeaderText="descripcion" SortExpression="descripcion" />
             <asp:BoundField DataField="genero" HeaderText="genero" SortExpression="genero" />
             <asp:BoundField DataField="estilo" HeaderText="estilo" SortExpression="estilo" />
             <asp:BoundField DataField="color" HeaderText="color" SortExpression="color" />
             <asp:BoundField DataField="talla" HeaderText="talla" SortExpression="talla" />
-            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowSelectButton="True" />
+            <asp:CommandField ShowDeleteButton="True" ShowSelectButton="True" />
         </Columns>
         <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
         <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
@@ -91,7 +91,22 @@
         <asp:TextBox ID="TextBoxDescripcion" runat="server"></asp:TextBox>
         <asp:Label ID="labelQuantity" runat="server" Text="Cantidad: "></asp:Label>
         <asp:TextBox ID="textBoxQuant" runat="server"></asp:TextBox>
-        <asp:Button ID="btnProcessUpdate" runat="server" Text="Procesar Update" OnClick="updateRow_Click" />
+        <asp:Button ID="btnProcessUpdate" runat="server" Text="Procesar Update" OnClick="updateRow_Click" OnClientClick="updateRow_Click" />
+        
+        <asp:SqlDataSource ID="SqlDataSourceUpdate" runat="server" ConnectionString="<%$ ConnectionStrings:InventarioZapateriaConnectionStringJoshua %>" SelectCommand="ZapatosSelect_usp" SelectCommandType="StoredProcedure" UpdateCommand="ZapatosUpdate_usp" UpdateCommandType="StoredProcedure" OnDataBinding="updateRow_Click">
+            <SelectParameters>
+                <asp:Parameter DefaultValue="" Name="id_Zapato" Type="Int32" />
+            </SelectParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="id_Zapato" Type="Int32" />
+                <asp:Parameter Name="modelo" Type="String" />
+                <asp:Parameter Name="descripcion" Type="String" />
+                <asp:Parameter Name="fk_color" Type="Int32" />
+                <asp:Parameter Name="fk_talla" Type="Int32" />
+                <asp:Parameter Name="fk_estilo" Type="Int32" />
+                <asp:Parameter Name="fk_linea" Type="Int32" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
     </div>
 
     <div class="col-md-1"></div>
@@ -144,6 +159,8 @@
     
 
     <asp:Label ID="LabelConsole" runat="server" Text="Label"></asp:Label>
+
+
 
 
 </asp:Content>

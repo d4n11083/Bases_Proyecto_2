@@ -120,7 +120,9 @@ namespace Inventario_Zapateria
 
                 labelId.Text = info[0].Text;
                 textBoxModelo.Text = info[1].Text;
-                textBoxModelo.Text = info[2].Text;
+                TextBoxDescripcion.Text = info[2].Text;
+                textBoxQuant.Text = info[6].Text;
+
 
                 LabelConsole.Text = info[0].Text;
             }
@@ -130,10 +132,76 @@ namespace Inventario_Zapateria
             }
         }
 
+        private void updateRow()
+        {
+            SqlDataSourceUpdate.UpdateParameters["modelo"].DefaultValue  = textBoxModelo.Text;
+            SqlDataSourceUpdate.UpdateParameters["id_Zapato"].DefaultValue = labelId.Text;
+            SqlDataSourceUpdate.UpdateParameters["descripcion"].DefaultValue = TextBoxDescripcion.Text;
+            SqlDataSourceUpdate.UpdateParameters["fk_color"].DefaultValue = ddlColour.SelectedValue;
+            SqlDataSourceUpdate.UpdateParameters["fk_talla"].DefaultValue = ddlSize.SelectedValue;
+            SqlDataSourceUpdate.UpdateParameters["fk_estilo"].DefaultValue = ddlStyle.SelectedValue;
+            SqlDataSourceUpdate.UpdateParameters["fk_linea"].DefaultValue = ddlLine.SelectedValue;
+
+            try
+            {
+                SqlDataSourceUpdate.Update();
+            }
+            catch (Exception except)
+            {
+                Messagebox("No se Pudo Actualizar: " + except);
+            }
+
+            Response.Redirect("default");
+
+        }
+
+        private bool checkFields()
+        {
+            bool isOk = true;
+            string empyFields = " Por favor rellene los siguientes espacios vacios: ";
+
+            if (textBoxModelo.Text == "")
+            {
+                isOk = false;
+                empyFields += " Modelo ";
+            }
+
+            if (textBoxQuant.Text == "")
+            {
+                isOk = false;
+                empyFields += " Cantidad ";
+            }
+
+            int i;
+            if (!int.TryParse(textBoxQuant.Text, out i))
+            {
+                empyFields += " En Cantidad solo se pueden colocar números ";
+                isOk = false;
+            }
+
+            if (TextBoxDescripcion.Text == "")
+            {
+                isOk = false;
+                empyFields += " Descripcion ";
+            }
+
+            if (!isOk)
+            {
+                Messagebox(empyFields);
+            }
+
+            return isOk;
+        }
 
         protected void updateRow_Click(object sender, EventArgs e)
         {
-            LabelConsole.Text = "Update";
+            LabelConsole.Text = textBoxModelo.Text;
+
+            if (checkFields())
+            {
+                updateRow();
+            }
+
         }
 
 
